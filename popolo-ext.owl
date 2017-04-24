@@ -24,6 +24,12 @@
     
 
 
+    <!-- http://argu.co/ns/popolo-ext#amends -->
+
+    <owl:ObjectProperty rdf:about="http://argu.co/ns/popolo-ext#amends"/>
+    
+
+
     <!-- http://schema.org/video -->
 
     <owl:ObjectProperty rdf:about="http://schema.org/video"/>
@@ -96,6 +102,22 @@
     
 
 
+    <!-- http://argu.co/ns/popolo-ext#Amendment -->
+
+    <owl:Class rdf:about="http://argu.co/ns/popolo-ext#Amendment">
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/ns/opengov#Motion"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://argu.co/ns/popolo-ext#amends"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onClass rdf:resource="http://www.w3.org/ns/opengov#Motion"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">A proposal to mofidy another proposal.</rdfs:comment>
+    </owl:Class>
+    
+
+
     <!-- http://schema.org/VideoObject -->
 
     <owl:Class rdf:about="http://schema.org/VideoObject">
@@ -123,6 +145,27 @@
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://schema.org/video"/>
                 <owl:someValuesFrom rdf:resource="http://schema.org/VideoObject"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </rdf:Description>
+    
+
+
+    <!-- http://www.w3.org/ns/opengov#Result -->
+
+    <rdf:Description rdf:about="http://www.w3.org/ns/opengov#Result">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.w3.org/ns/opengov#voteEvent"/>
+                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                <owl:onClass rdf:resource="http://www.w3.org/ns/opengov#VoteEvent"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://schema.org/text"/>
+                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
             </owl:Restriction>
         </rdfs:subClassOf>
     </rdf:Description>
@@ -160,8 +203,46 @@
                 <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
             </owl:Restriction>
         </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://schema.org/additionalType"/>
+                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://schema.org/text"/>
+                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
         <rdfs:comment xml:lang="en">A file that is attached to something</rdfs:comment>
     </owl:Class>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="https://argu.co/ns/core#Attachment"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
+        <owl:annotatedTarget>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://schema.org/additionalType"/>
+                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+            </owl:Restriction>
+        </owl:annotatedTarget>
+        <rdfs:comment xml:lang="en">A category, e.g. &apos;decisionlist&apos;</rdfs:comment>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="https://argu.co/ns/core#Attachment"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
+        <owl:annotatedTarget>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://schema.org/text"/>
+                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+            </owl:Restriction>
+        </owl:annotatedTarget>
+        <rdfs:comment xml:lang="en">Extracted text from the attachment.</rdfs:comment>
+    </owl:Axiom>
     
 
 
