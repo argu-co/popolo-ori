@@ -76,6 +76,12 @@
         <rdfs:subClassOf rdf:resource="http://schema.org/Event"/>
         <rdfs:subClassOf>
             <owl:Restriction>
+                <owl:onProperty rdf:resource="http://schema.org/superEvent"/>
+                <owl:someValuesFrom rdf:resource="http://www.w3.org/ns/opengov#Event"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
                 <owl:onProperty rdf:resource="http://schema.org/position"/>
                 <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
             </owl:Restriction>
