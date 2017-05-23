@@ -1,19 +1,20 @@
 <?xml version="1.0"?>
-<rdf:RDF xmlns="http://argu.co/ns/popolo-ext#"
-     xml:base="http://argu.co/ns/popolo-ext"
+<rdf:RDF xmlns="https://github.com/argu-co/popolo-ori#attachment"
+     xml:base="https://github.com/argu-co/popolo-ori#attachment"
      xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
      xmlns:owl="http://www.w3.org/2002/07/owl#"
      xmlns:xml="http://www.w3.org/XML/1998/namespace"
-     xmlns:ape="http://argu.co/ns/popolo-ext#"
      xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
-     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
-    <owl:Ontology rdf:about="http://argu.co/ns/popolo-ext">
-        <owl:imports rdf:resource="https://raw.githubusercontent.com/joepsz/popolo-spec/ontology/ontology.owl"/>
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:popolo="http://argu.co/ns/popolo-ext#">
+    <owl:Ontology rdf:about="https://github.com/argu-co/popolo-ori">
+        <owl:versionIRI rdf:resource="https://github.com/argu-co/popolo-ori/tree/v0.0.2"/>
+        <owl:imports rdf:resource="https://raw.githubusercontent.com/argu-co/popolo-spec/gh-pages/ontology.owl"/>
     </owl:Ontology>
+    
 
 
-
-    <!--
+    <!-- 
     ///////////////////////////////////////////////////////////////////////////////////////
     //
     // Object Properties
@@ -21,22 +22,52 @@
     ///////////////////////////////////////////////////////////////////////////////////////
      -->
 
+    
 
 
+    <!-- http://schema.org/audio -->
 
-    <!-- http://argu.co/ns/popolo-ext#amends -->
+    <owl:ObjectProperty rdf:about="http://schema.org/audio"/>
+    
 
-    <owl:ObjectProperty rdf:about="http://argu.co/ns/popolo-ext#amends"/>
 
+    <!-- http://schema.org/creator -->
+
+    <owl:ObjectProperty rdf:about="http://schema.org/creator"/>
+    
+
+
+    <!-- http://schema.org/superEvent -->
+
+    <owl:ObjectProperty rdf:about="http://schema.org/superEvent"/>
+    
 
 
     <!-- http://schema.org/video -->
 
     <owl:ObjectProperty rdf:about="http://schema.org/video"/>
+    
 
 
+    <!-- http://www.w3.org/ns/opengov#voteEvent -->
 
-    <!--
+    <owl:ObjectProperty rdf:about="http://www.w3.org/ns/opengov#voteEvent"/>
+    
+
+
+    <!-- https://github.com/argu-co/popolo-ori#amends -->
+
+    <owl:ObjectProperty rdf:about="https://github.com/argu-co/popolo-ori#amends"/>
+    
+
+
+    <!-- https://github.com/argu-co/popolo-ori#attachment -->
+
+    <owl:ObjectProperty rdf:about="https://github.com/argu-co/popolo-ori#attachment"/>
+    
+
+
+    <!-- 
     ///////////////////////////////////////////////////////////////////////////////////////
     //
     // Data properties
@@ -44,22 +75,70 @@
     ///////////////////////////////////////////////////////////////////////////////////////
      -->
 
+    
 
+
+    <!-- http://schema.org/additionalType -->
+
+    <owl:DatatypeProperty rdf:about="http://schema.org/additionalType"/>
+    
+
+
+    <!-- http://schema.org/description -->
+
+    <owl:DatatypeProperty rdf:about="http://schema.org/description"/>
+    
 
 
     <!-- http://schema.org/embedUrl -->
 
     <owl:DatatypeProperty rdf:about="http://schema.org/embedUrl"/>
+    
 
 
+    <!-- http://schema.org/fileFormat -->
 
-    <!-- https://argu.co/ns/core#fileType -->
-
-    <owl:DatatypeProperty rdf:about="https://argu.co/ns/core#fileType"/>
-
+    <owl:DatatypeProperty rdf:about="http://schema.org/fileFormat"/>
+    
 
 
-    <!--
+    <!-- http://schema.org/name -->
+
+    <owl:DatatypeProperty rdf:about="http://schema.org/name"/>
+    
+
+
+    <!-- http://schema.org/position -->
+
+    <owl:DatatypeProperty rdf:about="http://schema.org/position"/>
+    
+
+
+    <!-- http://schema.org/text -->
+
+    <owl:DatatypeProperty rdf:about="http://schema.org/text"/>
+    
+
+
+    <!-- https://github.com/argu-co/popolo-ori#fileType -->
+
+    <owl:DatatypeProperty rdf:about="https://github.com/argu-co/popolo-ori#fileType"/>
+    
+
+
+    <!-- https://schema.org/contentUrl -->
+
+    <owl:DatatypeProperty rdf:about="https://schema.org/contentUrl"/>
+    
+
+
+    <!-- https://schema.org/fileSize -->
+
+    <owl:DatatypeProperty rdf:about="https://schema.org/fileSize"/>
+    
+
+
+    <!-- 
     ///////////////////////////////////////////////////////////////////////////////////////
     //
     // Classes
@@ -67,17 +146,107 @@
     ///////////////////////////////////////////////////////////////////////////////////////
      -->
 
+    
 
 
+    <!-- http://schema.org/AudioObject -->
 
-    <!-- http://argu.co/ns/popolo-ext#AgendaItem -->
+    <owl:Class rdf:about="http://schema.org/AudioObject"/>
+    
 
-    <owl:Class rdf:about="http://argu.co/ns/popolo-ext#AgendaItem">
+
+    <!-- http://schema.org/Event -->
+
+    <owl:Class rdf:about="http://schema.org/Event"/>
+    
+
+
+    <!-- http://schema.org/VideoObject -->
+
+    <owl:Class rdf:about="http://schema.org/VideoObject">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://schema.org/contentUrl"/>
+                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.w3.org/ns/opengov#Event -->
+
+    <owl:Class rdf:about="http://www.w3.org/ns/opengov#Event">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://schema.org/audio"/>
+                <owl:someValuesFrom rdf:resource="http://schema.org/AudioObject"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://schema.org/video"/>
+                <owl:someValuesFrom rdf:resource="http://schema.org/VideoObject"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.w3.org/ns/opengov#Motion -->
+
+    <owl:Class rdf:about="http://www.w3.org/ns/opengov#Motion"/>
+    
+
+
+    <!-- http://www.w3.org/ns/opengov#Result -->
+
+    <owl:Class rdf:about="http://www.w3.org/ns/opengov#Result">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.w3.org/ns/opengov#voteEvent"/>
+                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                <owl:onClass rdf:resource="http://www.w3.org/ns/opengov#VoteEvent"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://schema.org/text"/>
+                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.w3.org/ns/opengov#VoteEvent -->
+
+    <owl:Class rdf:about="http://www.w3.org/ns/opengov#VoteEvent"/>
+    
+
+
+    <!-- http://xmlns.com/foaf/0.1/Agent -->
+
+    <owl:Class rdf:about="http://xmlns.com/foaf/0.1/Agent"/>
+    
+
+
+    <!-- https://github.com/argu-co/popolo-ori#AgendaItem -->
+
+    <owl:Class rdf:about="https://github.com/argu-co/popolo-ori#AgendaItem">
         <rdfs:subClassOf rdf:resource="http://schema.org/Event"/>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://schema.org/superEvent"/>
                 <owl:someValuesFrom rdf:resource="http://www.w3.org/ns/opengov#Event"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://github.com/argu-co/popolo-ori#attachment"/>
+                <owl:someValuesFrom rdf:resource="https://github.com/argu-co/popolo-ori#Attachment"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
@@ -100,87 +269,37 @@
                 <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
             </owl:Restriction>
         </rdfs:subClassOf>
-        <rdfs:comment xml:lang="en">An item in a list of topics to be discussed at an event.</rdfs:comment>
-        <rdfs:comment xml:lang="nl">Een onderwerp in een lijst om besproken te worden tijdens een bijeenkomst.</rdfs:comment>
-        <rdfs:label xml:lang="en">Agenda item</rdfs:label>
-        <rdfs:label xml:lang="nl">Agendapunt</rdfs:label>
     </owl:Class>
+    
 
 
+    <!-- https://github.com/argu-co/popolo-ori#Amendment -->
 
-    <!-- http://argu.co/ns/popolo-ext#Amendment -->
-
-    <owl:Class rdf:about="http://argu.co/ns/popolo-ext#Amendment">
+    <owl:Class rdf:about="https://github.com/argu-co/popolo-ori#Amendment">
         <rdfs:subClassOf rdf:resource="http://www.w3.org/ns/opengov#Motion"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://argu.co/ns/popolo-ext#amends"/>
+                <owl:onProperty rdf:resource="https://github.com/argu-co/popolo-ori#amends"/>
                 <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
                 <owl:onClass rdf:resource="http://www.w3.org/ns/opengov#Motion"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:comment xml:lang="en">A proposal to mofidy another proposal.</rdfs:comment>
+        <rdfs:comment xml:lang="nl">Een voorstel om een ander voorstel te wijzigen.</rdfs:comment>
+        <rdfs:label xml:lang="en">Amendment</rdfs:label>
     </owl:Class>
+    
 
 
+    <!-- https://github.com/argu-co/popolo-ori#Attachment -->
 
-    <!-- http://schema.org/VideoObject -->
-
-    <owl:Class rdf:about="http://schema.org/VideoObject">
+    <owl:Class rdf:about="https://github.com/argu-co/popolo-ori#Attachment">
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="https://schema.org/contentUrl"/>
-                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
-                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+                <owl:onProperty rdf:resource="http://schema.org/creator"/>
+                <owl:someValuesFrom rdf:resource="http://xmlns.com/foaf/0.1/Agent"/>
             </owl:Restriction>
         </rdfs:subClassOf>
-    </owl:Class>
-
-
-
-    <!-- http://www.w3.org/ns/opengov#Event -->
-
-    <rdf:Description rdf:about="http://www.w3.org/ns/opengov#Event">
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://schema.org/audio"/>
-                <owl:someValuesFrom rdf:resource="http://schema.org/AudioObject"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://schema.org/video"/>
-                <owl:someValuesFrom rdf:resource="http://schema.org/VideoObject"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-    </rdf:Description>
-
-
-
-    <!-- http://www.w3.org/ns/opengov#Result -->
-
-    <rdf:Description rdf:about="http://www.w3.org/ns/opengov#Result">
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.w3.org/ns/opengov#voteEvent"/>
-                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
-                <owl:onClass rdf:resource="http://www.w3.org/ns/opengov#VoteEvent"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://schema.org/text"/>
-                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
-                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-    </rdf:Description>
-
-
-
-    <!-- https://argu.co/ns/core#Attachment -->
-
-    <owl:Class rdf:about="https://argu.co/ns/core#Attachment">
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://schema.org/fileFormat"/>
@@ -190,7 +309,7 @@
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="https://argu.co/ns/core#fileType"/>
+                <owl:onProperty rdf:resource="https://github.com/argu-co/popolo-ori#fileType"/>
                 <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
                 <owl:onDataRange rdf:resource="http://www.w3.org/2002/07/owl#rational"/>
             </owl:Restriction>
@@ -224,9 +343,12 @@
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:comment xml:lang="en">A file that is attached to something</rdfs:comment>
+        <rdfs:comment xml:lang="nl">Een bestand dat ergens aan is toegevoegd</rdfs:comment>
+        <rdfs:label xml:lang="en">Attachment</rdfs:label>
+        <rdfs:label xml:lang="nl">Bijlage</rdfs:label>
     </owl:Class>
     <owl:Axiom>
-        <owl:annotatedSource rdf:resource="https://argu.co/ns/core#Attachment"/>
+        <owl:annotatedSource rdf:resource="https://github.com/argu-co/popolo-ori#Attachment"/>
         <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
         <owl:annotatedTarget>
             <owl:Restriction>
@@ -238,7 +360,7 @@
         <rdfs:comment xml:lang="en">A category, e.g. &apos;decisionlist&apos;</rdfs:comment>
     </owl:Axiom>
     <owl:Axiom>
-        <owl:annotatedSource rdf:resource="https://argu.co/ns/core#Attachment"/>
+        <owl:annotatedSource rdf:resource="https://github.com/argu-co/popolo-ori#Attachment"/>
         <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
         <owl:annotatedTarget>
             <owl:Restriction>
@@ -249,42 +371,45 @@
         </owl:annotatedTarget>
         <rdfs:comment xml:lang="en">Extracted text from the attachment.</rdfs:comment>
     </owl:Axiom>
+    
 
 
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
 
-    <!-- https://argu.co/ns/core#Document -->
+    
 
-    <owl:Class rdf:about="https://argu.co/ns/core#Document">
-        <rdfs:subClassOf rdf:resource="https://argu.co/ns/core#Attachment"/>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://schema.org/creator"/>
-                <owl:someValuesFrom rdf:resource="http://xmlns.com/foaf/0.1/Agent"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://schema.org/text"/>
-                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
-                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:comment xml:lang="en">A file that mainly contains text.</rdfs:comment>
-    </owl:Class>
-    <owl:Axiom>
-        <owl:annotatedSource rdf:resource="https://argu.co/ns/core#Document"/>
-        <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
-        <owl:annotatedTarget>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://schema.org/text"/>
-                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
-                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-            </owl:Restriction>
-        </owl:annotatedTarget>
-        <rdfs:comment xml:lang="en">The (extracted) body text of the attachment / document.</rdfs:comment>
-    </owl:Axiom>
+
+    <!-- https://github.com/argu-co/popolo-ori#AgendaItem -->
+
+    <owl:NamedIndividual rdf:about="https://github.com/argu-co/popolo-ori#AgendaItem">
+        <rdfs:label xml:lang="en">Agenda item</rdfs:label>
+        <rdfs:label xml:lang="nl">Agendapunt</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotations
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <rdf:Description rdf:about="https://github.com/argu-co/popolo-ori#AgendaItem">
+        <rdfs:comment xml:lang="en">An item in a list of topics to be discussed at an event.</rdfs:comment>
+        <rdfs:label xml:lang="en">Agenda Item</rdfs:label>
+        <rdfs:comment xml:lang="nl">Een onderwerp in een lijst om besproken te worden tijdens een bijeenkomst.</rdfs:comment>
+    </rdf:Description>
 </rdf:RDF>
 
 
 
-<!-- Generated by the OWL API (version 4.2.6.20160910-2108) https://github.com/owlcs/owlapi -->
+<!-- Generated by the OWL API (version 4.2.8.20170104-2310) https://github.com/owlcs/owlapi -->
+

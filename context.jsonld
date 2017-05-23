@@ -1,0 +1,100 @@
+{
+  "@context" : {
+    "Attachment" : {
+      "@id" : "https://github.com/argu-co/popolo-ori#Attachment"
+    },
+    "AgendaItem" : {
+      "@id" : "https://github.com/argu-co/popolo-ori#AgendaItem"
+    },
+    "voteEvent" : {
+      "@id" : "http://www.w3.org/ns/opengov#voteEvent",
+      "@type" : "@id"
+    },
+    "Motion" : {
+      "@id" : "http://www.w3.org/ns/opengov#Motion"
+    },
+    "additionalType" : {
+      "@id" : "http://schema.org/additionalType"
+    },
+    "label" : {
+      "@id" : "http://www.w3.org/2000/01/rdf-schema#label"
+    },
+    "Result" : {
+      "@id" : "http://www.w3.org/ns/opengov#Result"
+    },
+    "video" : {
+      "@id" : "http://schema.org/video",
+      "@type" : "@id"
+    },
+    "superEvent" : {
+      "@id" : "http://schema.org/superEvent",
+      "@type" : "@id"
+    },
+    "Event" : {
+      "@id" : "http://schema.org/Event"
+    },
+    "embedUrl" : {
+      "@id" : "http://schema.org/embedUrl"
+    },
+    "Agent" : {
+      "@id" : "http://xmlns.com/foaf/0.1/Agent"
+    },
+    "attachment" : {
+      "@id" : "https://github.com/argu-co/popolo-ori#attachment",
+      "@type" : "@id"
+    },
+    "VideoObject" : {
+      "@id" : "http://schema.org/VideoObject"
+    },
+    "position" : {
+      "@id" : "http://schema.org/position",
+      "@type" : "http://www.w3.org/2001/XMLSchema#integer"
+    },
+    "creator" : {
+      "@id" : "http://schema.org/creator",
+      "@type" : "@id"
+    },
+    "contentUrl" : {
+      "@id" : "https://schema.org/contentUrl"
+    },
+    "name" : {
+      "@id" : "http://schema.org/name"
+    },
+    "VoteEvent" : {
+      "@id" : "http://www.w3.org/ns/opengov#VoteEvent"
+    },
+    "text" : {
+      "@id" : "http://schema.org/text",
+      "@type" : "http://www.w3.org/2001/XMLSchema#string"
+    },
+    "AudioObject" : {
+      "@id" : "http://schema.org/AudioObject"
+    },
+    "amends" : {
+      "@id" : "https://github.com/argu-co/popolo-ori#amends",
+      "@type" : "@id"
+    },
+    "fileType" : {
+      "@id" : "https://github.com/argu-co/popolo-ori#fileType"
+    },
+    "audio" : {
+      "@id" : "http://schema.org/audio",
+      "@type" : "@id"
+    },
+    "fileSize" : {
+      "@id" : "https://schema.org/fileSize"
+    },
+    "fileFormat" : {
+      "@id" : "http://schema.org/fileFormat"
+    },
+    "comment" : {
+      "@id" : "http://www.w3.org/2000/01/rdf-schema#comment"
+    },
+    "description" : {
+      "@id" : "http://schema.org/description"
+    },
+    "Amendment" : {
+      "@id" : "https://github.com/argu-co/popolo-ori#Amendment"
+    }
+  }
+}
