@@ -1,9 +1,16 @@
 # Popolo-ORI
-Popolo-ORI is an extension of the [Popolo specification](http://popoloproject.com), or more specifically, the [Popolo Ontology](https://raw.githubusercontent.com/joepsz/popolo-spec/ontology/ontology.owl). It is designed to standardize data that stems from the meeting software used by Dutch Municipalities.
+Popolo-ORI is an extension of the [Popolo specification](http://popoloproject.com), or more specifically, the [Popolo Ontology](https://raw.githubusercontent.com/ArguCo/popolo-ori/popolo-ori
+.owl). It is designed to standardize data that stems from the meeting software used by Dutch municipalities. It is part of the [Open-Raadsinformatie project](https://openraadsinformatie.nl) ([github](https://github.com/openstate/open-raadsinformatie)).
 
 Quick links:
-* [Auto-generated documentation which includes Popolo](http://www.essepuntato.it/lode/imported/reasoner/https://raw.githubusercontent.com/joepsz/popolo-ori/master/popolo-ext.owl).
-* [Auto-generated documentation which does not include vanilla Popolo](http://www.essepuntato.it/lode/owlapi/reasoner/https://raw.githubusercontent.com/joepsz/popolo-ori/master/popolo-ext.owl)
+* [Auto-generated documentation which includes Popolo](http://www.essepuntato.it/lode/imported/reasoner/https://raw.githubusercontent.com/ArguCo/popolo-ori/master/popolo-ext.owl).
+
+## Using JSON-LD @context
+If your API needs to comply with Popolo-ORI, you will need to include the @context JSON object in your API responses. You can do this in the body of the JSON response or as a link in the HTTP header. Read more about applying this in the [W3C spec of JSON-LD](https://www.w3.org/TR/json-ld/#advanced-context-usage).
+
+## Generating the JSON-LD @context file
+* Follow the install instructions from the owl2jsonld repo.
+* Run the following command with the correct directories: `java -jar ~/owl2jsonld/target/uberjar/owl2jsonld-0.2.2-SNAPSHOT-standalone.jar https://raw.githubusercontent.com/ArguCo/popolo-ori/popolo-ori.owl > ~/popolo-ori/context.jsonld`
 
 ## New classes
 The amount of classes in an ontology should be kept as low as possible. For each added class, a reason is stated for including it here.
