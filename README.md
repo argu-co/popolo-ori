@@ -24,7 +24,3 @@ This sub-class of the Motion item has the added 'amends' property.
 
 ## Using JSON-LD @context
 If your API needs to comply with Popolo-ORI, you will need to include the @context JSON object in your API responses. You can do this in the body of the JSON response or as a link in the HTTP header. Read more about applying this in the [W3C spec of JSON-LD](https://www.w3.org/TR/json-ld/#advanced-context-usage).
-
-## Generating the JSON-LD @context file
-*   Follow the install instructions from the [owl2jsonld repo](https://github.com/stain/owl2jsonld/).
-*   Run the following command with the correct directories for owl2json and popolo-ori: `java -jar ~/Dev/tools/owl2jsonld/target/uberjar/owl2jsonld-0.2.2-SNAPSHOT-standalone.jar file:///home/joep/Dev/popolo-ori/popolo-ori.owl > ~/Dev/popolo-ori/context.jsonld`
