@@ -208,6 +208,12 @@
                 <owl:someValuesFrom rdf:resource="http://schema.org/VideoObject"/>
             </owl:Restriction>
         </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://github.com/argu-co/popolo-ori#attachment"/>
+                <owl:someValuesFrom rdf:resource="https://github.com/argu-co/popolo-ori#Attachment"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
     </owl:Class>
     
 
