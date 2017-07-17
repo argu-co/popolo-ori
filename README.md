@@ -10,7 +10,7 @@ The amount of classes in an ontology should be kept as low as possible. For each
 ### AgendaItem
 An item in a list of topics to be discussed at an event.
 
-Vanilla Popolo knows only Events, which can have child Events. This could be used to describe items in an agenda, but this causes a few issues. Firstly, if some front-end application were to list all Events, it would show both meetings and their agenda items. Secondly, Agenda Items have a position (index) in their parent Event. This attribute would not make sense in an Event. Thirdly,
+Vanilla Popolo knows only Events, which can have child Events. This could be used to describe items in an agenda, but this causes a few issues. Firstly, if some front-end application were to list all Events, it would show both meetings and their agenda items. Secondly, Agenda Items have a position (index) in their parent Event.
 
 ### Attachment
 A file that is attached to something.
