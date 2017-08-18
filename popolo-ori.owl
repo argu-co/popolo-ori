@@ -1,462 +1,515 @@
 <?xml version="1.0"?>
-<rdf:RDF xmlns="https://github.com/argu-co/popolo-ori/"
-     xml:base="https://github.com/argu-co/popolo-ori/"
+<Ontology xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="https://github.com/argu-co/popolo-ori"
      xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-     xmlns:owl="http://www.w3.org/2002/07/owl#"
      xmlns:xml="http://www.w3.org/XML/1998/namespace"
      xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
      xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
-     xmlns:popolo="http://argu.co/ns/popolo-ext#">
-    <owl:Ontology rdf:about="https://github.com/argu-co/popolo-ori">
-        <owl:versionIRI rdf:resource="https://github.com/argu-co/popolo-ori/tree/v0.0.2"/>
-        <owl:imports rdf:resource="https://raw.githubusercontent.com/argu-co/popolo-spec/gh-pages/ontology.owl"/>
-    </owl:Ontology>
-    
-
-
-    <!-- 
-    ///////////////////////////////////////////////////////////////////////////////////////
-    //
-    // Object Properties
-    //
-    ///////////////////////////////////////////////////////////////////////////////////////
-     -->
-
-    
-
-
-    <!-- http://schema.org/audio -->
-
-    <owl:ObjectProperty rdf:about="http://schema.org/audio"/>
-    
-
-
-    <!-- http://schema.org/creator -->
-
-    <owl:ObjectProperty rdf:about="http://schema.org/creator"/>
-    
-
-
-    <!-- http://schema.org/image -->
-
-    <owl:ObjectProperty rdf:about="http://schema.org/image"/>
-    
-
-
-    <!-- http://schema.org/superEvent -->
-
-    <owl:ObjectProperty rdf:about="http://schema.org/superEvent"/>
-    
-
-
-    <!-- http://schema.org/video -->
-
-    <owl:ObjectProperty rdf:about="http://schema.org/video"/>
-    
-
-
-    <!-- http://www.w3.org/ns/opengov#voteEvent -->
-
-    <owl:ObjectProperty rdf:about="http://www.w3.org/ns/opengov#voteEvent"/>
-    
-
-
-    <!-- https://github.com/argu-co/popolo-ori#amends -->
-
-    <owl:ObjectProperty rdf:about="https://github.com/argu-co/popolo-ori#amends"/>
-    
-
-
-    <!-- https://github.com/argu-co/popolo-ori#attachment -->
-
-    <owl:ObjectProperty rdf:about="https://github.com/argu-co/popolo-ori#attachment"/>
-    
-
-
-    <!-- 
-    ///////////////////////////////////////////////////////////////////////////////////////
-    //
-    // Data properties
-    //
-    ///////////////////////////////////////////////////////////////////////////////////////
-     -->
-
-    
-
-
-    <!-- http://schema.org/additionalType -->
-
-    <owl:DatatypeProperty rdf:about="http://schema.org/additionalType"/>
-    
-
-
-    <!-- http://schema.org/description -->
-
-    <owl:DatatypeProperty rdf:about="http://schema.org/description"/>
-    
-
-
-    <!-- http://schema.org/embedUrl -->
-
-    <owl:DatatypeProperty rdf:about="http://schema.org/embedUrl"/>
-    
-
-
-    <!-- http://schema.org/fileFormat -->
-
-    <owl:DatatypeProperty rdf:about="http://schema.org/fileFormat"/>
-    
-
-
-    <!-- http://schema.org/name -->
-
-    <owl:DatatypeProperty rdf:about="http://schema.org/name"/>
-    
-
-
-    <!-- http://schema.org/position -->
-
-    <owl:DatatypeProperty rdf:about="http://schema.org/position"/>
-    
-
-
-    <!-- http://schema.org/text -->
-
-    <owl:DatatypeProperty rdf:about="http://schema.org/text"/>
-    
-
-
-    <!-- http://www.w3.org/2000/01/rdf-schema#label -->
-
-    <owl:DatatypeProperty rdf:about="http://www.w3.org/2000/01/rdf-schema#label"/>
-    
-
-
-    <!-- https://github.com/argu-co/popolo-ori#fileType -->
-
-    <owl:DatatypeProperty rdf:about="https://github.com/argu-co/popolo-ori#fileType"/>
-    
-
-
-    <!-- https://schema.org/contentUrl -->
-
-    <owl:DatatypeProperty rdf:about="https://schema.org/contentUrl"/>
-    
-
-
-    <!-- https://schema.org/fileSize -->
-
-    <owl:DatatypeProperty rdf:about="https://schema.org/fileSize"/>
-    
-
-
-    <!-- 
-    ///////////////////////////////////////////////////////////////////////////////////////
-    //
-    // Classes
-    //
-    ///////////////////////////////////////////////////////////////////////////////////////
-     -->
-
-    
-
-
-    <!-- http://schema.org/AudioObject -->
-
-    <owl:Class rdf:about="http://schema.org/AudioObject"/>
-    
-
-
-    <!-- http://schema.org/Event -->
-
-    <owl:Class rdf:about="http://schema.org/Event"/>
-    
-
-
-    <!-- http://schema.org/ImageObject -->
-
-    <owl:Class rdf:about="http://schema.org/ImageObject"/>
-    
-
-
-    <!-- http://schema.org/VideoObject -->
-
-    <owl:Class rdf:about="http://schema.org/VideoObject">
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://schema.org/contentUrl"/>
-                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
-                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-    </owl:Class>
-    
-
-
-    <!-- http://www.w3.org/ns/opengov#Event -->
-
-    <owl:Class rdf:about="http://www.w3.org/ns/opengov#Event">
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://schema.org/audio"/>
-                <owl:someValuesFrom rdf:resource="http://schema.org/AudioObject"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://schema.org/video"/>
-                <owl:someValuesFrom rdf:resource="http://schema.org/VideoObject"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-    </owl:Class>
-    
-
-
-    <!-- http://www.w3.org/ns/opengov#Motion -->
-
-    <owl:Class rdf:about="http://www.w3.org/ns/opengov#Motion"/>
-    
-
-
-    <!-- http://www.w3.org/ns/opengov#Result -->
-
-    <owl:Class rdf:about="http://www.w3.org/ns/opengov#Result">
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.w3.org/ns/opengov#voteEvent"/>
-                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
-                <owl:onClass rdf:resource="http://www.w3.org/ns/opengov#VoteEvent"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://schema.org/text"/>
-                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
-                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-    </owl:Class>
-    
-
-
-    <!-- http://www.w3.org/ns/opengov#VoteEvent -->
-
-    <owl:Class rdf:about="http://www.w3.org/ns/opengov#VoteEvent"/>
-    
-
-
-    <!-- http://www.w3.org/ns/person#Person -->
-
-    <owl:Class rdf:about="http://www.w3.org/ns/person#Person">
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://schema.org/image"/>
-                <owl:someValuesFrom rdf:resource="http://schema.org/ImageObject"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-    </owl:Class>
-    
-
-
-    <!-- http://xmlns.com/foaf/0.1/Agent -->
-
-    <owl:Class rdf:about="http://xmlns.com/foaf/0.1/Agent"/>
-    
-
-
-    <!-- https://github.com/argu-co/popolo-ori#AgendaItem -->
-
-    <owl:Class rdf:about="https://github.com/argu-co/popolo-ori#AgendaItem">
-        <rdfs:subClassOf rdf:resource="http://schema.org/Event"/>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://schema.org/superEvent"/>
-                <owl:someValuesFrom rdf:resource="http://www.w3.org/ns/opengov#Event"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://github.com/argu-co/popolo-ori#attachment"/>
-                <owl:someValuesFrom rdf:resource="https://github.com/argu-co/popolo-ori#Attachment"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://schema.org/position"/>
-                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://schema.org/description"/>
-                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
-                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://schema.org/name"/>
-                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
-                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-    </owl:Class>
-    
-
-
-    <!-- https://github.com/argu-co/popolo-ori#Amendment -->
-
-    <owl:Class rdf:about="https://github.com/argu-co/popolo-ori#Amendment">
-        <rdfs:subClassOf rdf:resource="http://www.w3.org/ns/opengov#Motion"/>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://github.com/argu-co/popolo-ori#amends"/>
-                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-                <owl:onClass rdf:resource="http://www.w3.org/ns/opengov#Motion"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-    </owl:Class>
-    
-
-
-    <!-- https://github.com/argu-co/popolo-ori#Attachment -->
-
-    <owl:Class rdf:about="https://github.com/argu-co/popolo-ori#Attachment">
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://schema.org/creator"/>
-                <owl:someValuesFrom rdf:resource="http://xmlns.com/foaf/0.1/Agent"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://schema.org/fileFormat"/>
-                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://github.com/argu-co/popolo-ori#fileType"/>
-                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-                <owl:onDataRange rdf:resource="http://www.w3.org/2002/07/owl#rational"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://schema.org/contentUrl"/>
-                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-                <owl:onDataRange rdf:resource="http://www.w3.org/2002/07/owl#rational"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://schema.org/fileSize"/>
-                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://schema.org/additionalType"/>
-                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
-                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://schema.org/text"/>
-                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
-                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-    </owl:Class>
-    <owl:Axiom>
-        <owl:annotatedSource rdf:resource="https://github.com/argu-co/popolo-ori#Attachment"/>
-        <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
-        <owl:annotatedTarget>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://schema.org/additionalType"/>
-                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
-                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-            </owl:Restriction>
-        </owl:annotatedTarget>
-        <rdfs:comment xml:lang="en">A category, e.g. &apos;decisionlist&apos;</rdfs:comment>
-    </owl:Axiom>
-    <owl:Axiom>
-        <owl:annotatedSource rdf:resource="https://github.com/argu-co/popolo-ori#Attachment"/>
-        <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
-        <owl:annotatedTarget>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://schema.org/text"/>
-                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
-                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-            </owl:Restriction>
-        </owl:annotatedTarget>
-        <rdfs:comment xml:lang="en">Extracted text from the attachment.</rdfs:comment>
-    </owl:Axiom>
-    
-
-
-    <!-- 
-    ///////////////////////////////////////////////////////////////////////////////////////
-    //
-    // Individuals
-    //
-    ///////////////////////////////////////////////////////////////////////////////////////
-     -->
-
-    
-
-
-    <!-- https://github.com/argu-co/popolo-ori#AgendaItem -->
-
-    <owl:NamedIndividual rdf:about="https://github.com/argu-co/popolo-ori#AgendaItem">
-        <rdfs:label xml:lang="en">Agenda Item</rdfs:label>
-        <rdfs:label xml:lang="en">Agenda item</rdfs:label>
-        <rdfs:label xml:lang="nl">Agendapunt</rdfs:label>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- https://github.com/argu-co/popolo-ori#Amendment -->
-
-    <owl:NamedIndividual rdf:about="https://github.com/argu-co/popolo-ori#Amendment">
-        <rdfs:label xml:lang="en">Amendment</rdfs:label>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- https://github.com/argu-co/popolo-ori#Attachment -->
-
-    <owl:NamedIndividual rdf:about="https://github.com/argu-co/popolo-ori#Attachment">
-        <rdfs:label xml:lang="en">Attachment</rdfs:label>
-        <rdfs:label xml:lang="nl">Bijlage</rdfs:label>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- 
-    ///////////////////////////////////////////////////////////////////////////////////////
-    //
-    // Annotations
-    //
-    ///////////////////////////////////////////////////////////////////////////////////////
-     -->
-
-    <rdf:Description rdf:about="https://github.com/argu-co/popolo-ori#AgendaItem">
-        <rdfs:comment xml:lang="en">An item in a list of topics to be discussed at an event.</rdfs:comment>
-        <rdfs:comment xml:lang="nl">Een onderwerp in een lijst om besproken te worden tijdens een bijeenkomst.</rdfs:comment>
-    </rdf:Description>
-    <rdf:Description rdf:about="https://github.com/argu-co/popolo-ori#Amendment">
-        <rdfs:comment xml:lang="en">A proposal to mofidy another proposal.</rdfs:comment>
-        <rdfs:comment xml:lang="nl">Een voorstel om een ander voorstel te wijzigen.</rdfs:comment>
-    </rdf:Description>
-    <rdf:Description rdf:about="https://github.com/argu-co/popolo-ori#Attachment">
-        <rdfs:comment xml:lang="en">A file that is attached to something</rdfs:comment>
-        <rdfs:comment xml:lang="nl">Een bestand dat ergens aan is toegevoegd</rdfs:comment>
-    </rdf:Description>
-</rdf:RDF>
+     ontologyIRI="https://github.com/argu-co/popolo-ori"
+     versionIRI="https://github.com/argu-co/popolo-ori/tree/v0.0.2">
+    <Prefix name="" IRI="https://github.com/argu-co/popolo-ori#"/>
+    <Prefix name="ori" IRI="https://github.com/argu-co/popolo-ori#"/>
+    <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <Prefix name="xml" IRI="http://www.w3.org/XML/1998/namespace"/>
+    <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
+    <Prefix name="ncal" IRI="http://www.semanticdesktop.org/ontologies/2007/04/02/ncal#"/>
+    <Prefix name="orid" IRI="https://github.com/argu-co/popolo-ori/id#"/>
+    <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
+    <Prefix name="popolo" IRI="http://argu.co/ns/popolo-ext#"/>
+    <Prefix name="opengov" IRI="http://www.w3.org/ns/opengov#"/>
+    <Import>https://raw.githubusercontent.com/argu-co/popolo-spec/gh-pages/ontology.owl</Import>
+    <Declaration>
+        <ObjectProperty IRI="http://schema.org/attendee"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="opengov:AbsentCount"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Amendment"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="http://schema.org/image"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://xmlns.com/foaf/0.1/Agent"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="opengov:Motion"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty abbreviatedIRI="opengov:count"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="http://schema.org/embedUrl"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#ResultWithdrawn"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="opengov:PairedCount"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://schema.org/ImageObject"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="http://schema.org/fileFormat"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual abbreviatedIRI="opengov:YesCount"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasAgendaItem"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://schema.org/Event"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.w3.org/ns/person#Person"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#AgendaItem"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="opengov:VoteEvent"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#ResultPublished"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="http://schema.org/audio"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="opengov:Count"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="https://schema.org/fileSize"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Amendment"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="opengov:YesCount"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty abbreviatedIRI="opengov:group"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#absentee"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="opengov:Result"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Attachment"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://xmlns.com/foaf/0.1/Group"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="opengov:NoCount"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#fileType"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="http://schema.org/name"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="http://schema.org/video"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty abbreviatedIRI="rdfs:seeAlso"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#ResultKept"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="http://schema.org/additionalType"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="http://schema.org/text"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Attachment"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="http://schema.org/description"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="http://schema.org/position"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty abbreviatedIRI="rdfs:label"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="opengov:AbstainCount"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#attachment"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#AgendaItem"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#ResultExpired"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Bill"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="opengov:Event"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="http://schema.org/creator"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#ResultDiscussed"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="http://schema.org/superEvent"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="https://schema.org/contentUrl"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty abbreviatedIRI="opengov:voteEvent"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://schema.org/AudioObject"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="opengov:NotVotingCount"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://schema.org/VideoObject"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#ResultPostponed"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#amends"/>
+    </Declaration>
+    <SubClassOf>
+        <Class IRI="http://schema.org/VideoObject"/>
+        <DataMaxCardinality cardinality="1">
+            <DataProperty IRI="https://schema.org/contentUrl"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataMaxCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class abbreviatedIRI="opengov:AbsentCount"/>
+        <Class abbreviatedIRI="opengov:Count"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class abbreviatedIRI="opengov:AbstainCount"/>
+        <Class abbreviatedIRI="opengov:Count"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class abbreviatedIRI="opengov:Count"/>
+        <ObjectExactCardinality cardinality="1">
+            <ObjectProperty abbreviatedIRI="opengov:group"/>
+            <Class IRI="http://xmlns.com/foaf/0.1/Group"/>
+        </ObjectExactCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class abbreviatedIRI="opengov:Event"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="http://schema.org/audio"/>
+            <Class IRI="http://schema.org/AudioObject"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class abbreviatedIRI="opengov:Event"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="http://schema.org/video"/>
+            <Class IRI="http://schema.org/VideoObject"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class abbreviatedIRI="opengov:Event"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#absentee"/>
+            <Class IRI="http://www.w3.org/ns/person#Person"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class abbreviatedIRI="opengov:Event"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#hasAgendaItem"/>
+            <Class IRI="#AgendaItem"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class abbreviatedIRI="opengov:Motion"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="http://schema.org/name"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class abbreviatedIRI="opengov:NoCount"/>
+        <Class abbreviatedIRI="opengov:Count"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class abbreviatedIRI="opengov:NotVotingCount"/>
+        <Class abbreviatedIRI="opengov:Count"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class abbreviatedIRI="opengov:PairedCount"/>
+        <Class abbreviatedIRI="opengov:Count"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class abbreviatedIRI="opengov:Result"/>
+        <ObjectMaxCardinality cardinality="1">
+            <ObjectProperty abbreviatedIRI="opengov:voteEvent"/>
+            <Class abbreviatedIRI="opengov:VoteEvent"/>
+        </ObjectMaxCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class abbreviatedIRI="opengov:Result"/>
+        <DataMaxCardinality cardinality="1">
+            <DataProperty IRI="http://schema.org/text"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataMaxCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class abbreviatedIRI="opengov:VoteEvent"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty abbreviatedIRI="opengov:count"/>
+            <Class abbreviatedIRI="opengov:Count"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class abbreviatedIRI="opengov:YesCount"/>
+        <Class abbreviatedIRI="opengov:Count"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.w3.org/ns/person#Person"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="http://schema.org/image"/>
+            <Class IRI="http://schema.org/ImageObject"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.w3.org/ns/person#Person"/>
+        <DataSomeValuesFrom>
+            <DataProperty abbreviatedIRI="rdfs:seeAlso"/>
+            <Datatype abbreviatedIRI="xsd:anyURI"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#AgendaItem"/>
+        <Class IRI="http://schema.org/Event"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#AgendaItem"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="http://schema.org/superEvent"/>
+            <Class abbreviatedIRI="opengov:Event"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#AgendaItem"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#attachment"/>
+            <Class IRI="#Attachment"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#AgendaItem"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="http://schema.org/position"/>
+            <Datatype abbreviatedIRI="xsd:integer"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#AgendaItem"/>
+        <DataMaxCardinality cardinality="1">
+            <DataProperty IRI="http://schema.org/description"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataMaxCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#AgendaItem"/>
+        <DataMaxCardinality cardinality="1">
+            <DataProperty IRI="http://schema.org/name"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataMaxCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Amendment"/>
+        <Class abbreviatedIRI="opengov:Motion"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Amendment"/>
+        <ObjectExactCardinality cardinality="1">
+            <ObjectProperty IRI="#amends"/>
+            <Class abbreviatedIRI="opengov:Motion"/>
+        </ObjectExactCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Attachment"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="http://schema.org/creator"/>
+            <Class IRI="http://xmlns.com/foaf/0.1/Agent"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Attachment"/>
+        <DataExactCardinality cardinality="1">
+            <DataProperty IRI="http://schema.org/fileFormat"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataExactCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Attachment"/>
+        <DataExactCardinality cardinality="1">
+            <DataProperty IRI="#fileType"/>
+            <Datatype abbreviatedIRI="owl:rational"/>
+        </DataExactCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Attachment"/>
+        <DataExactCardinality cardinality="1">
+            <DataProperty IRI="https://schema.org/contentUrl"/>
+            <Datatype abbreviatedIRI="owl:rational"/>
+        </DataExactCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Attachment"/>
+        <DataExactCardinality cardinality="1">
+            <DataProperty IRI="https://schema.org/fileSize"/>
+            <Datatype abbreviatedIRI="xsd:integer"/>
+        </DataExactCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal xml:lang="en" datatypeIRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral">A category, e.g. &apos;decisionlist&apos;</Literal>
+        </Annotation>
+        <Class IRI="#Attachment"/>
+        <DataMaxCardinality cardinality="1">
+            <DataProperty IRI="http://schema.org/additionalType"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataMaxCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal xml:lang="en" datatypeIRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral">Extracted text from the attachment.</Literal>
+        </Annotation>
+        <Class IRI="#Attachment"/>
+        <DataMaxCardinality cardinality="1">
+            <DataProperty IRI="http://schema.org/text"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataMaxCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Bill"/>
+        <Class abbreviatedIRI="opengov:Motion"/>
+    </SubClassOf>
+    <ClassAssertion>
+        <Class abbreviatedIRI="opengov:Result"/>
+        <NamedIndividual IRI="#ResultDiscussed"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI="opengov:Result"/>
+        <NamedIndividual IRI="#ResultExpired"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI="opengov:Result"/>
+        <NamedIndividual IRI="#ResultKept"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI="opengov:Result"/>
+        <NamedIndividual IRI="#ResultPostponed"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI="opengov:Result"/>
+        <NamedIndividual IRI="#ResultPublished"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI="opengov:Result"/>
+        <NamedIndividual IRI="#ResultWithdrawn"/>
+    </ClassAssertion>
+    <DataPropertyAssertion>
+        <DataProperty abbreviatedIRI="rdfs:label"/>
+        <NamedIndividual IRI="#AgendaItem"/>
+        <Literal xml:lang="en" datatypeIRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral">Agenda Item</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty abbreviatedIRI="rdfs:label"/>
+        <NamedIndividual IRI="#AgendaItem"/>
+        <Literal xml:lang="en" datatypeIRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral">Agenda item</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty abbreviatedIRI="rdfs:label"/>
+        <NamedIndividual IRI="#AgendaItem"/>
+        <Literal xml:lang="nl" datatypeIRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral">Agendapunt</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty abbreviatedIRI="rdfs:label"/>
+        <NamedIndividual IRI="#Amendment"/>
+        <Literal xml:lang="en" datatypeIRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral">Amendment</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty abbreviatedIRI="rdfs:label"/>
+        <NamedIndividual IRI="#Attachment"/>
+        <Literal xml:lang="en" datatypeIRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral">Attachment</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty abbreviatedIRI="rdfs:label"/>
+        <NamedIndividual IRI="#Attachment"/>
+        <Literal xml:lang="nl" datatypeIRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral">Bijlage</Literal>
+    </DataPropertyAssertion>
+    <SubObjectPropertyOf>
+        <ObjectProperty abbreviatedIRI="opengov:group"/>
+        <ObjectProperty abbreviatedIRI="owl:topObjectProperty"/>
+    </SubObjectPropertyOf>
+    <InverseObjectProperties>
+        <ObjectProperty IRI="http://schema.org/attendee"/>
+        <ObjectProperty IRI="#absentee"/>
+    </InverseObjectProperties>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#absentee"/>
+        <Class abbreviatedIRI="opengov:Event"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#absentee"/>
+        <Class IRI="http://xmlns.com/foaf/0.1/Agent"/>
+    </ObjectPropertyRange>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#AgendaItem</IRI>
+        <Literal xml:lang="en" datatypeIRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral">An item in a list of topics to be discussed at an event.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#AgendaItem</IRI>
+        <Literal xml:lang="nl" datatypeIRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral">Een onderwerp in een lijst om besproken te worden tijdens een bijeenkomst.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Amendment</IRI>
+        <Literal xml:lang="en" datatypeIRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral">A proposal to mofidy another proposal.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Amendment</IRI>
+        <Literal xml:lang="nl" datatypeIRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral">Een voorstel om een ander voorstel te wijzigen.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Attachment</IRI>
+        <Literal xml:lang="en" datatypeIRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral">A file that is attached to something</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Attachment</IRI>
+        <Literal xml:lang="nl" datatypeIRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral">Een bestand dat ergens aan is toegevoegd</Literal>
+    </AnnotationAssertion>
+</Ontology>
 
 
 
