@@ -5,304 +5,358 @@
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix popolo: <http://argu.co/ns/popolo-ext#> .
-@base <https://github.com/argu-co/popolo-ori> .
 
-<https://github.com/argu-co/popolo-ori> rdf:type owl:Ontology ;
-                                         owl:versionIRI <https://github.com/argu-co/popolo-ori/tree/v0.0.2> ;
-                                         owl:imports <https://raw.githubusercontent.com/argu-co/popolo-spec/gh-pages/ontology.owl> .
+<https://github.com/argu-co/popolo-ori> a owl:Ontology ;
+	owl:versionIRI <https://github.com/argu-co/popolo-ori/tree/v0.0.2> ;
+	owl:imports <https://raw.githubusercontent.com/argu-co/popolo-spec/gh-pages/ontology.owl> .
+# 
+# 
+# #################################################################
+# #
+# #    Object Properties
+# #
+# #################################################################
+# 
+# 
+# http://schema.org/audio
+
+<http://schema.org/audio> a owl:ObjectProperty .
+# 
+# http://schema.org/creator
+
+<http://schema.org/creator> a owl:ObjectProperty .
+# 
+# http://schema.org/image
+
+<http://schema.org/image> a owl:ObjectProperty .
+# 
+# http://schema.org/superEvent
+
+<http://schema.org/superEvent> a owl:ObjectProperty .
+# 
+# http://schema.org/video
+
+<http://schema.org/video> a owl:ObjectProperty .
+# 
+# http://www.w3.org/ns/opengov#voteEvent
+
+<http://www.w3.org/ns/opengov#voteEvent> a owl:ObjectProperty .
+# 
+# https://github.com/argu-co/popolo-ori#motion
+
+<https://github.com/argu-co/popolo-ori#motion> a owl:ObjectProperty .
+# 
+# https://github.com/argu-co/popolo-ori/amends
+
+:amends a owl:ObjectProperty .
+# 
+# https://github.com/argu-co/popolo-ori/attachment
+
+:attachment a owl:ObjectProperty .
+# 
+# 
+# 
+# #################################################################
+# #
+# #    Data properties
+# #
+# #################################################################
+# 
+# 
+# http://schema.org/additionalType
+
+<http://schema.org/additionalType> a owl:DatatypeProperty .
+# 
+# http://schema.org/description
+
+<http://schema.org/description> a owl:DatatypeProperty .
+# 
+# http://schema.org/embedUrl
+
+<http://schema.org/embedUrl> a owl:DatatypeProperty .
+# 
+# http://schema.org/fileFormat
+
+<http://schema.org/fileFormat> a owl:DatatypeProperty .
+# 
+# http://schema.org/name
+
+<http://schema.org/name> a owl:DatatypeProperty .
+# 
+# http://schema.org/position
+
+<http://schema.org/position> a owl:DatatypeProperty .
+# 
+# http://schema.org/text
+
+<http://schema.org/text> a owl:DatatypeProperty .
+# 
+# http://www.w3.org/2000/01/rdf-schema#label
+
+rdfs:label a owl:DatatypeProperty .
+# 
+# https://github.com/argu-co/popolo-ori/fileType
+
+:fileType a owl:DatatypeProperty .
+# 
+# https://schema.org/contentUrl
+
+<https://schema.org/contentUrl> a owl:DatatypeProperty .
+# 
+# https://schema.org/fileSize
+
+<https://schema.org/fileSize> a owl:DatatypeProperty .
+# 
+# 
+# 
+# #################################################################
+# #
+# #    Classes
+# #
+# #################################################################
+# 
+# 
+# http://schema.org/AudioObject
+
+<http://schema.org/AudioObject> a owl:Class .
+# 
+# http://schema.org/Event
+
+<http://schema.org/Event> a owl:Class .
+# 
+# http://schema.org/ImageObject
+
+<http://schema.org/ImageObject> a owl:Class .
+# 
+# http://schema.org/VideoObject
+
+<http://schema.org/VideoObject> a owl:Class ;
+	rdfs:subClassOf _:genid1 .
 
-#################################################################
-#    Object Properties
-#################################################################
+_:genid1 a owl:Restriction ;
+	owl:onProperty <https://schema.org/contentUrl> ;
+	owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+	owl:onDataRange xsd:string .
+# 
+# http://www.w3.org/ns/opengov#Event
 
-###  http://schema.org/audio
-<http://schema.org/audio> rdf:type owl:ObjectProperty .
+<http://www.w3.org/ns/opengov#Event> a owl:Class ;
+	rdfs:subClassOf _:genid2 .
+
+_:genid2 a owl:Restriction ;
+	owl:onProperty <http://schema.org/audio> ;
+	owl:someValuesFrom <http://schema.org/AudioObject> .
+
+<http://www.w3.org/ns/opengov#Event> rdfs:subClassOf _:genid3 .
+
+_:genid3 a owl:Restriction ;
+	owl:onProperty <http://schema.org/video> ;
+	owl:someValuesFrom <http://schema.org/VideoObject> .
+
+<http://www.w3.org/ns/opengov#Event> rdfs:subClassOf _:genid4 .
+
+_:genid4 a owl:Restriction ;
+	owl:onProperty <https://github.com/argu-co/popolo-ori#motion> ;
+	owl:someValuesFrom <http://www.w3.org/ns/opengov#Motion> .
+
+<http://www.w3.org/ns/opengov#Event> rdfs:subClassOf _:genid5 .
+
+_:genid5 a owl:Restriction ;
+	owl:onProperty :attachment ;
+	owl:someValuesFrom :Attachment .
+# 
+# http://www.w3.org/ns/opengov#Motion
+
+<http://www.w3.org/ns/opengov#Motion> a owl:Class .
+# 
+# http://www.w3.org/ns/opengov#Result
+
+<http://www.w3.org/ns/opengov#Result> a owl:Class ;
+	rdfs:subClassOf _:genid6 .
 
+_:genid6 a owl:Restriction ;
+	owl:onProperty <http://www.w3.org/ns/opengov#voteEvent> ;
+	owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+	owl:onClass <http://www.w3.org/ns/opengov#VoteEvent> .
+
+<http://www.w3.org/ns/opengov#Result> rdfs:subClassOf _:genid7 .
 
-###  http://schema.org/creator
-<http://schema.org/creator> rdf:type owl:ObjectProperty .
+_:genid7 a owl:Restriction ;
+	owl:onProperty <http://schema.org/text> ;
+	owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+	owl:onDataRange xsd:string .
+# 
+# http://www.w3.org/ns/opengov#VoteEvent
 
+<http://www.w3.org/ns/opengov#VoteEvent> a owl:Class .
+# 
+# http://www.w3.org/ns/person#Person
 
-###  http://schema.org/image
-<http://schema.org/image> rdf:type owl:ObjectProperty .
+<http://www.w3.org/ns/person#Person> a owl:Class ;
+	rdfs:subClassOf _:genid8 .
 
+_:genid8 a owl:Restriction ;
+	owl:onProperty <http://schema.org/image> ;
+	owl:someValuesFrom <http://schema.org/ImageObject> .
+# 
+# http://xmlns.com/foaf/0.1/Agent
 
-###  http://schema.org/superEvent
-<http://schema.org/superEvent> rdf:type owl:ObjectProperty .
+<http://xmlns.com/foaf/0.1/Agent> a owl:Class .
+# 
+# https://github.com/argu-co/popolo-ori/AgendaItem
 
+:AgendaItem a owl:Class ;
+	rdfs:subClassOf <http://schema.org/Event> , _:genid9 .
 
-###  http://schema.org/video
-<http://schema.org/video> rdf:type owl:ObjectProperty .
+_:genid9 a owl:Restriction ;
+	owl:onProperty <http://schema.org/superEvent> ;
+	owl:someValuesFrom <http://www.w3.org/ns/opengov#Event> .
 
+:AgendaItem rdfs:subClassOf _:genid10 .
 
-###  http://www.w3.org/ns/opengov#voteEvent
-<http://www.w3.org/ns/opengov#voteEvent> rdf:type owl:ObjectProperty .
-
-
-###  https://github.com/argu-co/popolo-ori#amends
-:amends rdf:type owl:ObjectProperty .
-
-
-###  https://github.com/argu-co/popolo-ori#attachment
-:attachment rdf:type owl:ObjectProperty .
-
-
-#################################################################
-#    Data properties
-#################################################################
-
-###  http://schema.org/additionalType
-<http://schema.org/additionalType> rdf:type owl:DatatypeProperty .
-
-
-###  http://schema.org/description
-<http://schema.org/description> rdf:type owl:DatatypeProperty .
-
-
-###  http://schema.org/embedUrl
-<http://schema.org/embedUrl> rdf:type owl:DatatypeProperty .
-
-
-###  http://schema.org/fileFormat
-<http://schema.org/fileFormat> rdf:type owl:DatatypeProperty .
-
-
-###  http://schema.org/name
-<http://schema.org/name> rdf:type owl:DatatypeProperty .
-
-
-###  http://schema.org/position
-<http://schema.org/position> rdf:type owl:DatatypeProperty .
-
-
-###  http://schema.org/text
-<http://schema.org/text> rdf:type owl:DatatypeProperty .
-
-
-###  http://www.w3.org/2000/01/rdf-schema#label
-rdfs:label rdf:type owl:DatatypeProperty .
-
-
-###  https://github.com/argu-co/popolo-ori#fileType
-:fileType rdf:type owl:DatatypeProperty .
-
-
-###  https://schema.org/contentUrl
-<https://schema.org/contentUrl> rdf:type owl:DatatypeProperty .
-
-
-###  https://schema.org/fileSize
-<https://schema.org/fileSize> rdf:type owl:DatatypeProperty .
-
-
-#################################################################
-#    Classes
-#################################################################
-
-###  http://schema.org/AudioObject
-<http://schema.org/AudioObject> rdf:type owl:Class .
-
-
-###  http://schema.org/Event
-<http://schema.org/Event> rdf:type owl:Class .
-
-
-###  http://schema.org/ImageObject
-<http://schema.org/ImageObject> rdf:type owl:Class .
-
-
-###  http://schema.org/VideoObject
-<http://schema.org/VideoObject> rdf:type owl:Class ;
-                                rdfs:subClassOf [ rdf:type owl:Restriction ;
-                                                  owl:onProperty <https://schema.org/contentUrl> ;
-                                                  owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                                                  owl:onDataRange xsd:string
-                                                ] .
-
-
-###  http://www.w3.org/ns/opengov#Event
-<http://www.w3.org/ns/opengov#Event> rdf:type owl:Class ;
-                                     rdfs:subClassOf [ rdf:type owl:Restriction ;
-                                                       owl:onProperty <http://schema.org/audio> ;
-                                                       owl:someValuesFrom <http://schema.org/AudioObject>
-                                                     ] ,
-                                                     [ rdf:type owl:Restriction ;
-                                                       owl:onProperty <http://schema.org/video> ;
-                                                       owl:someValuesFrom <http://schema.org/VideoObject>
-                                                     ] ,
-                                                     [ rdf:type owl:Restriction ;
-                                                       owl:onProperty :attachment ;
-                                                       owl:someValuesFrom :Attachment
-                                                     ] .
-
-
-###  http://www.w3.org/ns/opengov#Motion
-<http://www.w3.org/ns/opengov#Motion> rdf:type owl:Class .
-
-
-###  http://www.w3.org/ns/opengov#Result
-<http://www.w3.org/ns/opengov#Result> rdf:type owl:Class ;
-                                      rdfs:subClassOf [ rdf:type owl:Restriction ;
-                                                        owl:onProperty <http://www.w3.org/ns/opengov#voteEvent> ;
-                                                        owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                                                        owl:onClass <http://www.w3.org/ns/opengov#VoteEvent>
-                                                      ] ,
-                                                      [ rdf:type owl:Restriction ;
-                                                        owl:onProperty <http://schema.org/text> ;
-                                                        owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                                                        owl:onDataRange xsd:string
-                                                      ] .
-
-
-###  http://www.w3.org/ns/opengov#VoteEvent
-<http://www.w3.org/ns/opengov#VoteEvent> rdf:type owl:Class .
-
-
-###  http://www.w3.org/ns/person#Person
-<http://www.w3.org/ns/person#Person> rdf:type owl:Class ;
-                                     rdfs:subClassOf [ rdf:type owl:Restriction ;
-                                                       owl:onProperty <http://schema.org/image> ;
-                                                       owl:someValuesFrom <http://schema.org/ImageObject>
-                                                     ] .
-
-
-###  http://xmlns.com/foaf/0.1/Agent
-<http://xmlns.com/foaf/0.1/Agent> rdf:type owl:Class .
-
-
-###  https://github.com/argu-co/popolo-ori#AgendaItem
-:AgendaItem rdf:type owl:Class ;
-            rdfs:subClassOf <http://schema.org/Event> ,
-                            [ rdf:type owl:Restriction ;
-                              owl:onProperty <http://schema.org/superEvent> ;
-                              owl:someValuesFrom <http://www.w3.org/ns/opengov#Event>
-                            ] ,
-                            [ rdf:type owl:Restriction ;
-                              owl:onProperty :attachment ;
-                              owl:someValuesFrom :Attachment
-                            ] ,
-                            [ rdf:type owl:Restriction ;
-                              owl:onProperty <http://schema.org/position> ;
-                              owl:someValuesFrom xsd:integer
-                            ] ,
-                            [ rdf:type owl:Restriction ;
-                              owl:onProperty <http://schema.org/description> ;
-                              owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                              owl:onDataRange xsd:string
-                            ] ,
-                            [ rdf:type owl:Restriction ;
-                              owl:onProperty <http://schema.org/name> ;
-                              owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                              owl:onDataRange xsd:string
-                            ] .
-
-
-###  https://github.com/argu-co/popolo-ori#Amendment
-:Amendment rdf:type owl:Class ;
-           rdfs:subClassOf <http://www.w3.org/ns/opengov#Motion> ,
-                           [ rdf:type owl:Restriction ;
-                             owl:onProperty :amends ;
-                             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                             owl:onClass <http://www.w3.org/ns/opengov#Motion>
-                           ] .
-
-
-###  https://github.com/argu-co/popolo-ori#Attachment
-:Attachment rdf:type owl:Class ;
-            rdfs:subClassOf [ rdf:type owl:Restriction ;
-                              owl:onProperty <http://schema.org/creator> ;
-                              owl:someValuesFrom <http://xmlns.com/foaf/0.1/Agent>
-                            ] ,
-                            [ rdf:type owl:Restriction ;
-                              owl:onProperty <http://schema.org/fileFormat> ;
-                              owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                              owl:onDataRange xsd:string
-                            ] ,
-                            [ rdf:type owl:Restriction ;
-                              owl:onProperty :fileType ;
-                              owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                              owl:onDataRange owl:rational
-                            ] ,
-                            [ rdf:type owl:Restriction ;
-                              owl:onProperty <https://schema.org/contentUrl> ;
-                              owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                              owl:onDataRange owl:rational
-                            ] ,
-                            [ rdf:type owl:Restriction ;
-                              owl:onProperty <https://schema.org/fileSize> ;
-                              owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                              owl:onDataRange xsd:integer
-                            ] ,
-                            [ rdf:type owl:Restriction ;
-                              owl:onProperty <http://schema.org/additionalType> ;
-                              owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                              owl:onDataRange xsd:string
-                            ] ,
-                            [ rdf:type owl:Restriction ;
-                              owl:onProperty <http://schema.org/text> ;
-                              owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                              owl:onDataRange xsd:string
-                            ] .
-
-[ rdf:type owl:Axiom ;
-   owl:annotatedSource :Attachment ;
-   owl:annotatedProperty rdfs:subClassOf ;
-   owl:annotatedTarget [ rdf:type owl:Restriction ;
-                         owl:onProperty <http://schema.org/additionalType> ;
-                         owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                         owl:onDataRange xsd:string
-                       ] ;
-   rdfs:comment "A category, e.g. 'decisionlist'"@en
- ] .
-
-[ rdf:type owl:Axiom ;
-   owl:annotatedSource :Attachment ;
-   owl:annotatedProperty rdfs:subClassOf ;
-   owl:annotatedTarget [ rdf:type owl:Restriction ;
-                         owl:onProperty <http://schema.org/text> ;
-                         owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                         owl:onDataRange xsd:string
-                       ] ;
-   rdfs:comment "Extracted text from the attachment."@en
- ] .
-
-
-#################################################################
-#    Individuals
-#################################################################
-
-###  https://github.com/argu-co/popolo-ori#AgendaItem
-:AgendaItem rdf:type owl:NamedIndividual ;
-            rdfs:label "Agenda Item"@en ,
-                       "Agenda item"@en ,
-                       "Agendapunt"@nl .
-
-
-###  https://github.com/argu-co/popolo-ori#Amendment
-:Amendment rdf:type owl:NamedIndividual ;
-           rdfs:label "Amendment"@en .
-
-
-###  https://github.com/argu-co/popolo-ori#Attachment
-:Attachment rdf:type owl:NamedIndividual ;
-            rdfs:label "Attachment"@en ,
-                       "Bijlage"@nl .
-
-
-#################################################################
-#    Annotations
-#################################################################
-
-:AgendaItem rdfs:comment "An item in a list of topics to be discussed at an event."@en ,
-                         "Een onderwerp in een lijst om besproken te worden tijdens een bijeenkomst."@nl .
-
-
-:Amendment rdfs:comment "A proposal to mofidy another proposal."@en ,
-                        "Een voorstel om een ander voorstel te wijzigen."@nl .
-
-
-:Attachment rdfs:comment "A file that is attached to something"@en ,
-                         "Een bestand dat ergens aan is toegevoegd"@nl .
-
-
-###  Generated by the OWL API (version 4.2.6.20160910-2108) https://github.com/owlcs/owlapi
+_:genid10 a owl:Restriction ;
+	owl:onProperty <https://github.com/argu-co/popolo-ori#motion> ;
+	owl:someValuesFrom <http://www.w3.org/ns/opengov#Motion> .
+
+:AgendaItem rdfs:subClassOf _:genid11 .
+
+_:genid11 a owl:Restriction ;
+	owl:onProperty :attachment ;
+	owl:someValuesFrom :Attachment .
+
+:AgendaItem rdfs:subClassOf _:genid12 .
+
+_:genid12 a owl:Restriction ;
+	owl:onProperty <http://schema.org/position> ;
+	owl:someValuesFrom xsd:integer .
+
+:AgendaItem rdfs:subClassOf _:genid13 .
+
+_:genid13 a owl:Restriction ;
+	owl:onProperty <http://schema.org/description> ;
+	owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+	owl:onDataRange xsd:string .
+
+:AgendaItem rdfs:subClassOf _:genid14 .
+
+_:genid14 a owl:Restriction ;
+	owl:onProperty <http://schema.org/name> ;
+	owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+	owl:onDataRange xsd:string .
+# 
+# https://github.com/argu-co/popolo-ori/Amendment
+
+:Amendment a owl:Class ;
+	rdfs:subClassOf <http://www.w3.org/ns/opengov#Motion> , _:genid15 .
+
+_:genid15 a owl:Restriction ;
+	owl:onProperty :amends ;
+	owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+	owl:onClass <http://www.w3.org/ns/opengov#Motion> .
+# 
+# https://github.com/argu-co/popolo-ori/Attachment
+
+:Attachment a owl:Class ;
+	rdfs:subClassOf _:genid16 .
+
+_:genid16 a owl:Restriction ;
+	owl:onProperty <http://schema.org/creator> ;
+	owl:someValuesFrom <http://xmlns.com/foaf/0.1/Agent> .
+
+:Attachment rdfs:subClassOf _:genid17 .
+
+_:genid17 a owl:Restriction ;
+	owl:onProperty <http://schema.org/fileFormat> ;
+	owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+	owl:onDataRange xsd:string .
+
+:Attachment rdfs:subClassOf _:genid18 .
+
+_:genid18 a owl:Restriction ;
+	owl:onProperty :fileType ;
+	owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+	owl:onDataRange owl:rational .
+
+:Attachment rdfs:subClassOf _:genid19 .
+
+_:genid19 a owl:Restriction ;
+	owl:onProperty <https://schema.org/contentUrl> ;
+	owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+	owl:onDataRange owl:rational .
+
+:Attachment rdfs:subClassOf _:genid20 .
+
+_:genid20 a owl:Restriction ;
+	owl:onProperty <https://schema.org/fileSize> ;
+	owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+	owl:onDataRange xsd:integer .
+
+:Attachment rdfs:subClassOf _:genid21 .
+
+_:genid21 a owl:Restriction ;
+	owl:onProperty <http://schema.org/additionalType> ;
+	owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+	owl:onDataRange xsd:string .
+
+:Attachment rdfs:subClassOf _:genid23 .
+
+_:genid23 a owl:Restriction ;
+	owl:onProperty <http://schema.org/text> ;
+	owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+	owl:onDataRange xsd:string .
+
+_:genid22 a owl:Axiom ;
+	owl:annotatedSource :Attachment ;
+	owl:annotatedProperty rdfs:subClassOf ;
+	owl:annotatedTarget _:genid21 ;
+	rdfs:comment "A category, e.g. 'decisionlist'"@en .
+
+_:genid24 a owl:Axiom ;
+	owl:annotatedSource :Attachment ;
+	owl:annotatedProperty rdfs:subClassOf ;
+	owl:annotatedTarget _:genid23 ;
+	rdfs:comment "Extracted text from the attachment."@en .
+# 
+# 
+# 
+# #################################################################
+# #
+# #    Individuals
+# #
+# #################################################################
+# 
+# 
+# https://github.com/argu-co/popolo-ori/AgendaItem
+
+:AgendaItem a owl:NamedIndividual ;
+	rdfs:label "Agenda Item"@en , "Agenda item"@en , "Agendapunt"@nl .
+# 
+# https://github.com/argu-co/popolo-ori/Amendment
+
+:Amendment a owl:NamedIndividual ;
+	rdfs:label "Amendment"@en .
+# 
+# https://github.com/argu-co/popolo-ori/Attachment
+
+:Attachment a owl:NamedIndividual ;
+	rdfs:label "Attachment"@en , "Bijlage"@nl .
+# 
+# 
+# 
+# #################################################################
+# #
+# #    Annotations
+# #
+# #################################################################
+# 
+# 
+
+:AgendaItem rdfs:comment "Een onderwerp in een lijst om besproken te worden tijdens een bijeenkomst."@nl , "An item in a list of topics to be discussed at an event."@en .
+# 
+
+:Amendment rdfs:comment "Een voorstel om een ander voorstel te wijzigen."@nl , "A proposal to mofidy another proposal."@en .
+# 
+
+:Attachment rdfs:comment "Een bestand dat ergens aan is toegevoegd"@nl , "A file that is attached to something"@en .
+# 
+# Generated by the OWL API (version 4.2.6.20160910-2108) https://github.com/owlcs/owlapi
