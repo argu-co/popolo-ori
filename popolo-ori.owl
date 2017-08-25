@@ -42,6 +42,10 @@
 
 <http://www.w3.org/ns/opengov#voteEvent> a owl:ObjectProperty .
 # 
+# https://github.com/argu-co/popolo-ori#agenda
+
+<https://github.com/argu-co/popolo-ori#agenda> a owl:ObjectProperty .
+# 
 # https://github.com/argu-co/popolo-ori#motion
 
 <https://github.com/argu-co/popolo-ori#motion> a owl:ObjectProperty .
@@ -138,6 +142,10 @@ _:genid1 a owl:Restriction ;
 	owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
 	owl:onDataRange xsd:string .
 # 
+# http://www.w3.org/1999/02/22-rdf-syntax-ns#List
+
+rdf:List a owl:Class .
+# 
 # http://www.w3.org/ns/opengov#Event
 
 <http://www.w3.org/ns/opengov#Event> a owl:Class ;
@@ -156,14 +164,26 @@ _:genid3 a owl:Restriction ;
 <http://www.w3.org/ns/opengov#Event> rdfs:subClassOf _:genid4 .
 
 _:genid4 a owl:Restriction ;
+	owl:onProperty <https://github.com/argu-co/popolo-ori#agenda> ;
+	owl:someValuesFrom rdf:List .
+
+<http://www.w3.org/ns/opengov#Event> rdfs:subClassOf _:genid6 .
+
+_:genid6 a owl:Restriction ;
 	owl:onProperty <https://github.com/argu-co/popolo-ori#motion> ;
 	owl:someValuesFrom <http://www.w3.org/ns/opengov#Motion> .
 
-<http://www.w3.org/ns/opengov#Event> rdfs:subClassOf _:genid5 .
+<http://www.w3.org/ns/opengov#Event> rdfs:subClassOf _:genid7 .
 
-_:genid5 a owl:Restriction ;
+_:genid7 a owl:Restriction ;
 	owl:onProperty :attachment ;
 	owl:someValuesFrom :Attachment .
+
+_:genid5 a owl:Axiom ;
+	owl:annotatedSource <http://www.w3.org/ns/opengov#Event> ;
+	owl:annotatedProperty rdfs:subClassOf ;
+	owl:annotatedTarget _:genid4 ;
+	rdfs:comment "An RDF list that contains ori:AgendaItems"@en .
 # 
 # http://www.w3.org/ns/opengov#Motion
 
@@ -172,16 +192,16 @@ _:genid5 a owl:Restriction ;
 # http://www.w3.org/ns/opengov#Result
 
 <http://www.w3.org/ns/opengov#Result> a owl:Class ;
-	rdfs:subClassOf _:genid6 .
+	rdfs:subClassOf _:genid8 .
 
-_:genid6 a owl:Restriction ;
+_:genid8 a owl:Restriction ;
 	owl:onProperty <http://www.w3.org/ns/opengov#voteEvent> ;
 	owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
 	owl:onClass <http://www.w3.org/ns/opengov#VoteEvent> .
 
-<http://www.w3.org/ns/opengov#Result> rdfs:subClassOf _:genid7 .
+<http://www.w3.org/ns/opengov#Result> rdfs:subClassOf _:genid9 .
 
-_:genid7 a owl:Restriction ;
+_:genid9 a owl:Restriction ;
 	owl:onProperty <http://schema.org/text> ;
 	owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
 	owl:onDataRange xsd:string .
@@ -193,9 +213,9 @@ _:genid7 a owl:Restriction ;
 # http://www.w3.org/ns/person#Person
 
 <http://www.w3.org/ns/person#Person> a owl:Class ;
-	rdfs:subClassOf _:genid8 .
+	rdfs:subClassOf _:genid10 .
 
-_:genid8 a owl:Restriction ;
+_:genid10 a owl:Restriction ;
 	owl:onProperty <http://schema.org/image> ;
 	owl:someValuesFrom <http://schema.org/ImageObject> .
 # 
@@ -206,40 +226,40 @@ _:genid8 a owl:Restriction ;
 # https://github.com/argu-co/popolo-ori/AgendaItem
 
 :AgendaItem a owl:Class ;
-	rdfs:subClassOf <http://schema.org/Event> , _:genid9 .
-
-_:genid9 a owl:Restriction ;
-	owl:onProperty <http://schema.org/superEvent> ;
-	owl:someValuesFrom <http://www.w3.org/ns/opengov#Event> .
-
-:AgendaItem rdfs:subClassOf _:genid10 .
-
-_:genid10 a owl:Restriction ;
-	owl:onProperty <https://github.com/argu-co/popolo-ori#motion> ;
-	owl:someValuesFrom <http://www.w3.org/ns/opengov#Motion> .
-
-:AgendaItem rdfs:subClassOf _:genid11 .
+	rdfs:subClassOf <http://schema.org/Event> , _:genid11 .
 
 _:genid11 a owl:Restriction ;
-	owl:onProperty :attachment ;
-	owl:someValuesFrom :Attachment .
+	owl:onProperty <http://schema.org/superEvent> ;
+	owl:someValuesFrom <http://www.w3.org/ns/opengov#Event> .
 
 :AgendaItem rdfs:subClassOf _:genid12 .
 
 _:genid12 a owl:Restriction ;
-	owl:onProperty <http://schema.org/position> ;
-	owl:someValuesFrom xsd:integer .
+	owl:onProperty <https://github.com/argu-co/popolo-ori#motion> ;
+	owl:someValuesFrom <http://www.w3.org/ns/opengov#Motion> .
 
 :AgendaItem rdfs:subClassOf _:genid13 .
 
 _:genid13 a owl:Restriction ;
-	owl:onProperty <http://schema.org/description> ;
-	owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-	owl:onDataRange xsd:string .
+	owl:onProperty :attachment ;
+	owl:someValuesFrom :Attachment .
 
 :AgendaItem rdfs:subClassOf _:genid14 .
 
 _:genid14 a owl:Restriction ;
+	owl:onProperty <http://schema.org/position> ;
+	owl:someValuesFrom xsd:integer .
+
+:AgendaItem rdfs:subClassOf _:genid15 .
+
+_:genid15 a owl:Restriction ;
+	owl:onProperty <http://schema.org/description> ;
+	owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+	owl:onDataRange xsd:string .
+
+:AgendaItem rdfs:subClassOf _:genid16 .
+
+_:genid16 a owl:Restriction ;
 	owl:onProperty <http://schema.org/name> ;
 	owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
 	owl:onDataRange xsd:string .
@@ -247,9 +267,9 @@ _:genid14 a owl:Restriction ;
 # https://github.com/argu-co/popolo-ori/Amendment
 
 :Amendment a owl:Class ;
-	rdfs:subClassOf <http://www.w3.org/ns/opengov#Motion> , _:genid15 .
+	rdfs:subClassOf <http://www.w3.org/ns/opengov#Motion> , _:genid17 .
 
-_:genid15 a owl:Restriction ;
+_:genid17 a owl:Restriction ;
 	owl:onProperty :amends ;
 	owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
 	owl:onClass <http://www.w3.org/ns/opengov#Motion> .
@@ -257,64 +277,64 @@ _:genid15 a owl:Restriction ;
 # https://github.com/argu-co/popolo-ori/Attachment
 
 :Attachment a owl:Class ;
-	rdfs:subClassOf _:genid16 .
-
-_:genid16 a owl:Restriction ;
-	owl:onProperty <http://schema.org/creator> ;
-	owl:someValuesFrom <http://xmlns.com/foaf/0.1/Agent> .
-
-:Attachment rdfs:subClassOf _:genid17 .
-
-_:genid17 a owl:Restriction ;
-	owl:onProperty <http://schema.org/fileFormat> ;
-	owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-	owl:onDataRange xsd:string .
-
-:Attachment rdfs:subClassOf _:genid18 .
+	rdfs:subClassOf _:genid18 .
 
 _:genid18 a owl:Restriction ;
-	owl:onProperty :fileType ;
-	owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-	owl:onDataRange owl:rational .
+	owl:onProperty <http://schema.org/creator> ;
+	owl:someValuesFrom <http://xmlns.com/foaf/0.1/Agent> .
 
 :Attachment rdfs:subClassOf _:genid19 .
 
 _:genid19 a owl:Restriction ;
-	owl:onProperty <https://schema.org/contentUrl> ;
+	owl:onProperty <http://schema.org/fileFormat> ;
 	owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-	owl:onDataRange owl:rational .
+	owl:onDataRange xsd:string .
 
 :Attachment rdfs:subClassOf _:genid20 .
 
 _:genid20 a owl:Restriction ;
-	owl:onProperty <https://schema.org/fileSize> ;
+	owl:onProperty :fileType ;
 	owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-	owl:onDataRange xsd:integer .
+	owl:onDataRange owl:rational .
 
 :Attachment rdfs:subClassOf _:genid21 .
 
 _:genid21 a owl:Restriction ;
-	owl:onProperty <http://schema.org/additionalType> ;
-	owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-	owl:onDataRange xsd:string .
+	owl:onProperty <https://schema.org/contentUrl> ;
+	owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+	owl:onDataRange owl:rational .
+
+:Attachment rdfs:subClassOf _:genid22 .
+
+_:genid22 a owl:Restriction ;
+	owl:onProperty <https://schema.org/fileSize> ;
+	owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+	owl:onDataRange xsd:integer .
 
 :Attachment rdfs:subClassOf _:genid23 .
 
 _:genid23 a owl:Restriction ;
-	owl:onProperty <http://schema.org/text> ;
+	owl:onProperty <http://schema.org/additionalType> ;
 	owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
 	owl:onDataRange xsd:string .
 
-_:genid22 a owl:Axiom ;
-	owl:annotatedSource :Attachment ;
-	owl:annotatedProperty rdfs:subClassOf ;
-	owl:annotatedTarget _:genid21 ;
-	rdfs:comment "A category, e.g. 'decisionlist'"@en .
+:Attachment rdfs:subClassOf _:genid25 .
+
+_:genid25 a owl:Restriction ;
+	owl:onProperty <http://schema.org/text> ;
+	owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+	owl:onDataRange xsd:string .
 
 _:genid24 a owl:Axiom ;
 	owl:annotatedSource :Attachment ;
 	owl:annotatedProperty rdfs:subClassOf ;
 	owl:annotatedTarget _:genid23 ;
+	rdfs:comment "A category, e.g. 'decisionlist'"@en .
+
+_:genid26 a owl:Axiom ;
+	owl:annotatedSource :Attachment ;
+	owl:annotatedProperty rdfs:subClassOf ;
+	owl:annotatedTarget _:genid25 ;
 	rdfs:comment "Extracted text from the attachment."@en .
 # 
 # 
