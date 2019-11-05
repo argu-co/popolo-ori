@@ -1,8 +1,7 @@
 # Popolo-ORI
 Popolo-ORI is an extension of the [Popolo specification](http://popoloproject.com), or more specifically, the [Popolo Ontology](https://raw.githubusercontent.com/argu-co/popolo-spec/gh-pages/ontology.owl). It is designed to standardize data that stems from the meeting software used by Dutch municipalities. It is part of the [Open-Raadsinformatie project](https://openraadsinformatie.nl) ([github](https://github.com/openstate/open-raadsinformatie)).
 
-Quick links:
-* [Auto-generated documentation which includes Popolo](http://www.essepuntato.it/lode/imported/reasoner/https://raw.githubusercontent.com/argu-co/popolo-ori/master/popolo-ori.owl).
+[Here is the owl file](https://raw.githubusercontent.com/argu-co/popolo-ori/master/popolo-ori.owl)
 
 ## New classes
 The amount of classes in an ontology should be kept as low as possible. For each added class, a reason is stated for including it here.
