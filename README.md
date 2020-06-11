@@ -1,4 +1,7 @@
 # Popolo-ORI
+
+_Usage is not recommended, repo is no longer maintained._
+
 Popolo-ORI is an extension of the [Popolo specification](http://popoloproject.com), or more specifically, the [Popolo Ontology](https://raw.githubusercontent.com/argu-co/popolo-spec/gh-pages/ontology.owl). It is designed to standardize data that stems from the meeting software used by Dutch municipalities. It is part of the [Open-Raadsinformatie project](https://openraadsinformatie.nl) ([github](https://github.com/openstate/open-raadsinformatie)).
 
 [Here is the owl file](https://raw.githubusercontent.com/argu-co/popolo-ori/master/popolo-ori.owl)
